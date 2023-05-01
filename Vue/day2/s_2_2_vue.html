@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Noto Sans KR', sans-serif;
+      color: rgb(38, 38, 38);
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 500px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      color: #50B8E7;
+    }
+
+    .buttonArea {
+      margin: 0 auto;
+      width: 80%;
+    }
+
+    .buttonRow {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      height: 80px;
+    }
+
+    .btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 45%;
+      border: 1px solid #50B8E7;
+      cursor: pointer;
+    }
+
+    .clear {
+      margin-top: 10px;
+      outline: none;
+      background: none;
+      border: 1px solid #50B8E7;
+      width: 100px;
+      height: 50px;
+      cursor: pointer;
+      font-size: large;
+    }
+
+    .clear:hover {
+      background-color: #B9E2F5;
+    }
+
+    .type {
+      font-size: x-large;
+      font-weight: bold;
+    }
+
+    .selected {
+      background-color: #B9E2F5;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="container">
+      <h1>버튼 클릭하기</h1>
+      <section class="buttonArea">
+        <div class="buttonRow">
+          <div class="btn" @click="change1" :class="{selected : butt1_tf}">
+            <span class="type">1</span>
+          </div>
+          <div class="btn" @click="change2" :class="{selected : butt2_tf}">
+            <span class="type">2</span>
+          </div>
+        </div>
+        <div class="buttonRow">
+          <div class="btn" @click="change3" :class="{selected : butt3_tf}">
+            <span class="type">3</span>
+          </div>
+          <div class="btn" @click="change4" :class="{selected : butt4_tf}">
+            <span class="type">4</span>
+          </div>
+        </div>
+      </section>
+      <button class="clear" @click="change5">전체 해제</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const butt = document.getElementsByClassName('btn')
+    const cle = document.getElementsByClassName('clear')
+    const app = new Vue({
+      el: '#app',
+      data: {
+        butt1 : butt[0],
+        butt1_tf : false,
+        butt2 : butt[1],
+        butt2_tf : false,
+        butt3 : butt[2],
+        butt3_tf : false,
+        butt4 : butt[3],
+        butt4_tf : false,
+      },
+      methods : {
+        change1(){
+            this.butt1_tf = !this.butt1_tf
+        },
+        change2(){
+            this.butt2_tf = !this.butt2_tf
+        },
+        change3(){
+            this.butt3_tf = !this.butt3_tf
+        },
+        change4(){
+            this.butt4_tf = !this.butt4_tf
+        },
+        change5(){
+            this.butt1_tf = false,
+            this.butt2_tf = false,
+            this.butt3_tf = false,
+            this.butt4_tf = false
+        }
+      },
+    })
+  </script>
+</body>
+</html>
