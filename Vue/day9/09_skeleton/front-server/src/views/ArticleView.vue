@@ -17,13 +17,26 @@ export default {
     ArticleList
   },
   computed:{
+    isLogin() {
+        return this.$store.getters.isLogin // 로그인 여부 => 
+    }
   },
   created() {
     this.getArticles()
   },
   methods: {
     getArticles() {
+        if (this.isLogin) {
+            this.$store.dispatch('getArticles')
+        } else {
+            alert('로그인이 필요한 서비스입니다')
+            this.$router.push({ name : 'LogInView' })
+        }
+
         this.$store.dispatch('getArticles')
+
+        // 로그인 O => getArticles action 실행
+        // 로그인 X => login 페이지로 이동
     }
   }
 }

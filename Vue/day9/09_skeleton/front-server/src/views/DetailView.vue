@@ -28,6 +28,9 @@ export default {
         axios({
             method: 'get',
             url: `${API_URL}/api/v1/articles/${this.$route.params.id}/`,
+            headers: {
+                Authorization: `Token ${this.$store.state.token}`
+            }
         })
         .then((res) => {
             console.log(res)
